@@ -1,0 +1,33 @@
+Activity:
+  ConnectionTime: 15
+  SearchTime: 1
+CommunicationProtocol: Mqtt
+HeartbeatIntervalSeconds: 60
+MQTTcustom:
+  Broker:
+    Address: a1f0e0pkc9i92f-ats.iot.eu-central-1.amazonaws.com
+    KeepAlive: 60
+    Port: 8883
+    Qos: 1
+    Ssl: false
+  Login:
+    Password: p@ssw0rd
+    Username: sender
+    ClientId: 
+    TlsCertificateFile: "hivesound/aws/client-certificate.pem"
+    TlsKeyFile: "hivesound/aws/client-private.key"
+    TlsCaFile: "hivesound/aws/ca.pem"
+  Topic:
+    Data: hivesound/data
+    Heartbeat: hivesound/heartbeat
+    LastWill: hivesound/heartbeat
+MqttBroker: CUSTOM
+Selection:
+  Mode: Standard+Activity
+Sft:
+  Ip: 192.168.1.100
+  Location: /TestActivity
+  Password: p@ssw0rd
+  Port: 22
+  Status: Disabled
+  Username: ftpuser

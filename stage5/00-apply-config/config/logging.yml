@@ -1,0 +1,11 @@
+global:
+  # set the threshold for all loggers
+  logLevel: INFO
+local:
+  logLevel: INFO
+  logToStdout: False
+remote:
+  active: True
+  url: "https://api.openobserve.ai/api/julian_organization_20163_p1ulS48WjNWHObL/development/_json"
+  authorization: ""
+  logLevel: WARNING

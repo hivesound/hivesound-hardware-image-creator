@@ -1,0 +1,6 @@
+version: "2"
+authtoken: "${NGROK_TOKEN}"
+tunnels:
+  ssh:
+    proto: tcp
+    addr: 22
