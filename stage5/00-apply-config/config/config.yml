@@ -13,7 +13,7 @@ MQTTcustom:
   Login:
     Password: p@ssw0rd
     Username: sender
-    ClientId: 
+    ClientId: ${AWS_CLIENT_ID}
     TlsCertificateFile: "hivesound/aws/client-certificate.pem"
     TlsKeyFile: "hivesound/aws/client-private.key"
     TlsCaFile: "hivesound/aws/ca.pem"

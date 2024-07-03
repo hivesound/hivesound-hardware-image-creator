@@ -35,8 +35,8 @@ prometheus.remote_write "grafanacloud" {
     url = "https://prometheus-prod-24-prod-eu-west-2.grafana.net/api/prom/push"
 
     basic_auth {
-      username = ""
-      password = ""
+      username = "${ALLOY_AGENT_REMOTE_TARGET_USERNAME}"
+      password = "${ALLOY_AGENT_REMOTE_TARGET_PASSWORD}"
     }
   }
 }

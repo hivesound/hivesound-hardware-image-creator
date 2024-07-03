@@ -6,6 +6,6 @@ local:
   logToStdout: False
 remote:
   active: True
-  url: "https://api.openobserve.ai/api/julian_organization_20163_p1ulS48WjNWHObL/development/_json"
-  authorization: ""
+  url: "${OPEN_OBSERVE_LOGS_URL}"
+  authorization: "${OPEN_OBSERVE_LOGS_AUTH_HEADER_VALUE}"
   logLevel: WARNING
