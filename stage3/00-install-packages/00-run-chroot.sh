@@ -17,5 +17,5 @@ curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
 apt update
 
 # install
-apt install -y alloy ngrok
+apt install -y alloy ngrok minicom
 systemctl enable alloy.service
