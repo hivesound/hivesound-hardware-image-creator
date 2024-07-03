@@ -2,6 +2,13 @@
 
 Contains instruction for the specific HIVESOUND build
 
+## Configuration
+
+* Copy current hivesound-gateway into stage4/00-install-gateway-app/app
+* Create a copy of build_config/build.env_template as build_config/build.env
+* Add your credentials to build_config/build.env
+** Your certificates have to be a oneliner. Replace linebreaks with \n
+
 ## Todos
 
 * Add an envrionment file to pass config values 

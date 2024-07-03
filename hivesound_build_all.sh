@@ -6,4 +6,4 @@ rm -f stage4/SKIP
 rm -f stage5/SKIP
 
 docker rm -v pigen_work
-PRESERVE_CONTAINER=1 PIGEN_DOCKER_OPTS="-e NGROK_TOKEN=token_value" ./build-docker.sh
+PRESERVE_CONTAINER=1 PIGEN_DOCKER_OPTS="--env-file build_config/build.env" ./build-docker.sh
