@@ -7,6 +7,7 @@ echo net.ipv6.conf.lo.disable_ipv6=1 >> /etc/sysctl.conf
 
 # setup ngrok
 systemctl disable ngrok.service
+systemctl enable activate_lte_apn.service
 
 # activate cronjobs
 crontab /home/admin/crontab_config

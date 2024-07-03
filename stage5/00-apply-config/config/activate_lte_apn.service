@@ -1,0 +1,13 @@
+[Unit]
+Description=Sets up the LTE hat
+After=dev-ttyUSB1.device
+
+[Service]
+Type=simple
+Environment=TERM=xterm-256color
+User=admin
+Group=admin
+ExecStart=(echo -e "AT+CGACT=1,8\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200
+
+[Install]
+WantedBy=multi-user.target
