@@ -37,8 +37,6 @@ cp ngrok.yml ${ROOTFS_DIR}/home/admin/.config/ngrok/ngrok.yml
 sed -i "s/\${NGROK_TOKEN}/$NGROK_TOKEN/g" ${ROOTFS_DIR}/home/admin/.config/ngrok/ngrok.yml
 cp ngrok.service ${ROOTFS_DIR}/etc/systemd/system/ngrok.service
 
-# lte
-cp activate_lte_apn.service ${ROOTFS_DIR}/etc/systemd/system/activate_lte_apn.service
 
 # dns settings
 ## deactivate dns managment by NetworkManager
