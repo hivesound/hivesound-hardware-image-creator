@@ -7,5 +7,5 @@ SKIP_IMAGES
 .pc
 *-pc
 stage4/00-install-gateway-app/app
-build_config/build.env
+build_config/*.env
 .DS_Store
