@@ -39,3 +39,11 @@ cp ngrok.service ${ROOTFS_DIR}/etc/systemd/system/ngrok.service
 
 # lte
 cp activate_lte_apn.service ${ROOTFS_DIR}/etc/systemd/system/activate_lte_apn.service
+
+# dns settings
+## deactivate dns managment by NetworkManager
+## Guide -> https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking#disabling-dns-processing-in-the-networkmanager-configuration_manually-configuring-the-etc-resolv-conf-file
+cp 90-dns-none.conf ${ROOTFS_DIR}/etc/NetworkManager/conf.d/90-dns-none.conf
+
+## set hardcoded dns servers
+cp resolv.conf ${ROOTFS_DIR}/etc/resolv.conf
