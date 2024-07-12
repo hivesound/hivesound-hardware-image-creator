@@ -22,11 +22,12 @@ echo "" >> $OUTPUT_FILE
 
 # Send the AT command
 echo "Execute AT commands" >> $OUTPUT_FILE
-(echo -e "AT+CGDCONT?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
-(echo -e "AT+COPS?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
-(echo -e "AT+CREG?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
-# (echo -e "AT+CSQ?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
-(echo -e "AT+CGACT?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
+(echo -e "AT+CGDCONT?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE # checks PDP context
+(echo -e "AT+CGACT?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE # checks what PDP context is activated
+(echo -e "AT+COPS?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE # checks currently selected operator
+(echo -e "AT+CREG?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE # checks GSM registration
+(echo -e "AT+CEREG?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE # checks LTE registration
+# (echo -e "AT+CSQ\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
 
 # showw ip
 echo "show ip" >> $OUTPUT_FILE
