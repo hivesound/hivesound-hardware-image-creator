@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Cronjob entry
+#*/5 * * * * /usr/bin/env TERM=xterm /usr/bin/bash -c "/home/admin/check_lte_connection"
+
+OUTPUT_FILE="/home/admin/check_lte_connection.log"
+LTE_INTERFACE_NAME="usb0"
+
+IPV6="2001:4860:4860::8888"
+IPV4="8.8.8.8"
+DOMAIN_NAME="google.de"
+
+echo "" >> $OUTPUT_FILE 2>&1
+
+echo "$(date +"%Y-%m-%d %H:%M:%S") - send command $AT_COMMAND" >> $OUTPUT_FILE
+echo "----------------" >> $OUTPUT_FILE
+
+echo "Is ttyUSB1 available?" >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+ls -l /dev/ttyUSB1 >> $OUTPUT_FILE 2>&1
+echo "" >> $OUTPUT_FILE
+
+# Send the AT command
+echo "Execute AT commands" >> $OUTPUT_FILE
+(echo -e "AT+CGDCONT?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
+(echo -e "AT+COPS?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
+(echo -e "AT+CREG?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
+# (echo -e "AT+CSQ?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
+(echo -e "AT+CGACT?\r"; sleep 2) | sudo minicom -D /dev/ttyUSB1 -b 115200 -C $OUTPUT_FILE 2>> $OUTPUT_FILE
+
+# showw ip
+echo "show ip" >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+ip address show >> $OUTPUT_FILE 2>&1
+echo "" >> $OUTPUT_FILE
+
+# ping ipv6
+echo "ping ipv6" >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+ping -I $LTE_INTERFACE_NAME $IPV6 -c 1 >> $OUTPUT_FILE 2>&1
+echo "" >> $OUTPUT_FILE
+
+# ping ipv4
+echo "ping ipv4" >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+ping -I $LTE_INTERFACE_NAME $IPV4 -c 1 >> $OUTPUT_FILE 2>&1
+echo "" >> $OUTPUT_FILE
+
+# ping domain name
+echo "ping domain name" >> $OUTPUT_FILE
+echo "" >> $OUTPUT_FILE
+ping -I $LTE_INTERFACE_NAME $DOMAIN_NAME -c 1 >> $OUTPUT_FILE 2>&1
+echo "" >> $OUTPUT_FILE
+
+# failsave
+sudo killall minicom
+
+echo "----------------" >> $OUTPUT_FILE
