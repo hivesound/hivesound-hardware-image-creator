@@ -9,7 +9,7 @@ prometheus.exporter.unix "localhost" {
 
 prometheus.scrape "default" {
     // Setting the scrape interval lower to make it faster to be able to see the metrics
-    scrape_interval = "10s"
+    scrape_interval = "120s"
 
     targets    = prometheus.exporter.unix.localhost.targets
     forward_to = [
@@ -19,7 +19,7 @@ prometheus.scrape "default" {
 
 prometheus.scrape "pythonapp" {
   // Setting the scrape interval lower to make it faster to be able to see the metrics
-  scrape_interval = "10s"
+  scrape_interval = "120s"
 
   
   // Collect metrics from the default listen address.
@@ -33,6 +33,10 @@ prometheus.scrape "pythonapp" {
 prometheus.remote_write "grafanacloud" {
   endpoint {
     url = "https://prometheus-prod-24-prod-eu-west-2.grafana.net/api/prom/push"
+    
+    queue_config {
+      max_samples_per_send = "50" // default is 2000
+    }
 
     basic_auth {
       username = "${ALLOY_AGENT_REMOTE_TARGET_USERNAME}"
