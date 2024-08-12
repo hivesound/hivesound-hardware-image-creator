@@ -2,6 +2,7 @@
 
 # setup ngrok
 systemctl disable ngrok.service
+systemctl enable lte_hat.service
 
 # activate cronjobs
 crontab /home/admin/crontab_config

@@ -38,6 +38,11 @@ sed -i "s/\${NGROK_TOKEN}/$NGROK_TOKEN/g" ${ROOTFS_DIR}/home/admin/.config/ngrok
 cp ngrok.service ${ROOTFS_DIR}/etc/systemd/system/ngrok.service
 
 
+# lte hat network setup
+cp lte_hat/lte_hat.service ${ROOTFS_DIR}/etc/systemd/system/lte_hat.service
+cp lte_hat/lte_hat_ppp_peer ${ROOTFS_DIR}/etc/ppp/peers/lte_hat
+cp lte_hat/lte_hat_chatscript ${ROOTFS_DIR}/etc/chatscripts/lte_hat
+
 # dns settings
 ## deactivate dns managment by NetworkManager
 ## Guide -> https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_and_managing_networking/manually-configuring-the-etc-resolv-conf-file_configuring-and-managing-networking#disabling-dns-processing-in-the-networkmanager-configuration_manually-configuring-the-etc-resolv-conf-file
