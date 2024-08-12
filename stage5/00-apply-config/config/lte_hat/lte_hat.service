@@ -1,0 +1,10 @@
+[Unit]
+Description=PPP0 Connection
+After=network.target
+[Service]
+ExecStart=/usr/sbin/pppd call lte_hat
+ExecStop=/usr/bin/pkill pppd
+Restart=always
+Type=forking
+[Install]
+WantedBy=multi-user.target
